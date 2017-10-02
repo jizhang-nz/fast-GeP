@@ -1,2 +1,2 @@
 # fast_wgMLST
-Fast resolving relationship of bacterial isolates with WGS data
+Fast resolving relationship of bacterial isolates with WGS data.
