@@ -1,2 +1,2 @@
 # fast_wgMLST
-Fast resolving relationship of bacterial isolates with WGS data.
+Fast evaluation of genealogical relationships of bacterial isolates with whole-genome sequening data.
