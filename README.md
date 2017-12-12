@@ -12,7 +12,7 @@ Installation
 
 ## Prerequisites
 Before start, you need to make sure the following three programs were full functional in your system:
-   * [BLAST+](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+   * [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
    * [DIAMOND](https://github.com/bbuchfink/diamond)
    * [MAFFT](https://mafft.cbrc.jp/alignment/software/)
 
