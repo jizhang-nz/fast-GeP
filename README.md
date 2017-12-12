@@ -8,7 +8,6 @@ It is written in Perl and has been tested in MacOS (OS X 10.9.5 and High Sierra 
 
 ## Motivation
 Large-scale WGS dataset based studies are becoming increasingly common. WGS based pathogen surveillance and outbreak investigations create a demand for highly discriminative and time-efficient bioinformatics tools to transform large amounts of sequencing data into usable biological information such as relationship of the isolates.
-Installation
 
 ## Prerequisites
 Before start, you need to make sure the following three programs were full functional in your system:
