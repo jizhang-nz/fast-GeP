@@ -23,8 +23,11 @@ Initiate the analysis by using the command:
     perl fast-GeP.pl <options>
     
 ## Examples:
-    perl fast-GeP.pl –g list.fas.txt –r reference.gbk
+    perl fast-GeP.pl g list.fas.txt r reference.gbk
 
-This commond will build an _ad hoc_ scheme from 'reference.gbk' to transform the assembly files in 'list.fas.txt' into allele profiles with BLAST+.
+This commond will build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+.
 
 ## Citation
+
+
+
