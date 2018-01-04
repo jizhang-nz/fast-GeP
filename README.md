@@ -16,17 +16,21 @@ Before start, you need to make sure the following three programs were full funct
    * [MAFFT](https://mafft.cbrc.jp/alignment/software/)
 
 ## Usage
-Once the three dependent external tools were installed properly, you could copy the program to a directory in which your the data files stored. 
-Initiate the analysis by using the command: 
-
-    perl fast-GeP.pl <options>
-    
-## Examples:
+Let's assume you have put the fast-GeP.pl file in your PATH. If not, or if you prefer, you could always put the fast-GeP.pl file along with your other input files, and use commands like:
     perl fast-GeP.pl -g list.fas.txt -r reference.gbk
-
-This commond will build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+.
+    
+Here are some example commands:
+Run the analysis using BLAST+ as aligner (this commond will build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
+    fast-GeP -g list.fas.txt -r reference.gbk
+Run the analysis using DIAMOND as aligner:
+    fast-GeP -g list.fas.txt -r reference.gbk
+Run the analysis using BLAST+ as aligner and produce a 'long' results:
+    fast-GeP -g list.fas.txt -r reference.gbk -l
+Run the analysis using BLAST+ as aligner and do not produce pariewise comparison files:
+    fast-GeP -g list.fas.txt -r reference.gbk -n
 
 ## Citation
+`Genome-by-genome approach for fast bacterial genealogical relationship evaluation`
 
 
 
