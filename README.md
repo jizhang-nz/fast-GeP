@@ -16,13 +16,13 @@ Before start, you need to make sure the following three programs were full funct
    * [MAFFT](https://mafft.cbrc.jp/alignment/software/)
 
 ## Usage
-Let's assume you have put the fast-GeP.pl file in your PATH. If not, or if you prefer, you could always put the fast-GeP.pl file along with your other input files, and use commands like:
+Let's assume you have put the `fast-GeP.pl` file in your PATH. If not, or if you prefer, you could always put the `fast-GeP.pl` file along with your other input files, and use commands like:
 
     perl fast-GeP.pl -g list.fas.txt -r reference.gbk
 
 Here are some example commands:
 
-Run the analysis using BLAST+ as aligner (_i.e._, build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
+Run the analysis using BLAST+ as aligner (_i.e._ build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
 
     fast-GeP -g list.fas.txt -r reference.gbk
 
