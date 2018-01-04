@@ -22,13 +22,13 @@ Let's assume you have put the fast-GeP.pl file in your PATH. If not, or if you p
 
 Here are some example commands:
 
-Run the analysis using BLAST+ as aligner (this commond will build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
+Run the analysis using BLAST+ as aligner (_i.e._, build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
 
     fast-GeP -g list.fas.txt -r reference.gbk
 
 Run the analysis using DIAMOND as aligner:
 
-    fast-GeP -g list.fas.txt -r reference.gbk
+    fast-GeP -g list.fas.txt -r reference.gbk -d
 
 Run the analysis using BLAST+ as aligner and produce a 'long' results:
 
