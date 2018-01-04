@@ -1,5 +1,5 @@
 # Fast Genome Profiler (Fast-GeP)
-Fast and easy way to infer high-resolution genealogical relationship of bacterial isolates with WGS data.
+Fast and easy way to infer high-resolution genealogical relationship of bacterial isolates with WGS assembly data.
 
 ## Introduction
 
@@ -18,19 +18,20 @@ Before start, you need to make sure the following three programs were full funct
 ## Usage
 Let's assume you have put the fast-GeP.pl file in your PATH. If not, or if you prefer, you could always put the fast-GeP.pl file along with your other input files, and use commands like:
     perl fast-GeP.pl -g list.fas.txt -r reference.gbk
-    
+
 Here are some example commands:
+
 Run the analysis using BLAST+ as aligner (this commond will build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
     fast-GeP -g list.fas.txt -r reference.gbk
+
 Run the analysis using DIAMOND as aligner:
     fast-GeP -g list.fas.txt -r reference.gbk
+
 Run the analysis using BLAST+ as aligner and produce a 'long' results:
     fast-GeP -g list.fas.txt -r reference.gbk -l
+
 Run the analysis using BLAST+ as aligner and do not produce pariewise comparison files:
     fast-GeP -g list.fas.txt -r reference.gbk -n
 
 ## Citation
-`Genome-by-genome approach for fast bacterial genealogical relationship evaluation`
-
-
-
+_Genome-by-genome approach for fast bacterial genealogical relationship evaluation_
