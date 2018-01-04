@@ -1,0 +1,9 @@
+GeP:
+GeP -g list.genomes.txt -r EN893.gbk
+
+fast-GeP using BLAST+:
+fast-GeP -g list.genomes.txt -r EN893.gbk
+
+fast-GeP using DIAMOND:
+fast-GeP -g list.genomes.txt -r EN893.gbk -b
+
