@@ -12,7 +12,7 @@ Large-scale WGS dataset based studies are becoming increasingly common. WGS base
 ## Prerequisites
 Before start, you need to make sure the following three programs were full functional in your system:
    * [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
-   * [DIAMOND](https://github.com/bbuchfink/diamond)
+   * [DIAMOND](https://github.com/bbuchfink/diamond) (v0.9.10.111 or higher)
    * [MAFFT](https://mafft.cbrc.jp/alignment/software/)
 
 ## Usage
