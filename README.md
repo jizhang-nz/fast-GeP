@@ -28,7 +28,7 @@ Run the analysis using BLAST+ as aligner (_i.e._ build an _ad hoc_ scheme from `
 
 Run the analysis using DIAMOND as aligner:
 
-    fast-GeP -g list.fas.txt -r reference.gbk -d
+    fast-GeP -g list.fas.txt -r reference.gbk -b
 
 Run the analysis using BLAST+ as aligner and produce a 'long' results:
 
