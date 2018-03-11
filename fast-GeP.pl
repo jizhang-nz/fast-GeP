@@ -136,7 +136,8 @@ while(<GENOME>){
 			my $seq = $_;
 			$seq =~ s/.*\n//;
 			$seq =~ s/>//;
-			$seq =~ s/\n//g;
+			$seq =~ s/\s//g;
+			$seq =~ s/N/n/g;
 			print OUT "$seq", "\n$spacer\n";
 		}
 	}
@@ -373,20 +374,26 @@ while(<GENOME>){
 					unless($extraction =~ m/[^atgcATGC]/){
 						print ETC ">$genome.$strand_prev$aaid_prev\n$extraction\n";						
 					}
-
 					close SEQIN;
 					close ETC;
 					$key = $aaid_prev;
 					$key =~ s/gene//;
 					$key = $key - 1;
-					if($extraction =~ m/[^atgcATGC]/){
+					if($extraction =~ m/[^atgcATGCN]/){
 						$presences["$key"] = "9"; #9 code for containing ambiguity codes
+					}elsif($extraction =~ m/N/){
+						$presences["$key"] = "3"; #3 code for a truncated gene
 					}else{
 						$presences["$key"] = "1"; #1 code for a complete and single-copy gene
 					}
 					push @extraction_seqs, $extraction;
 					my $extraction_head = "$aaid_prev"."_"."$extract_len";
 					$extraction_heads_hash{$extraction} = $extraction_head;
+				}elsif($coverage_prev < $coverage_c && $copy == 1){
+					$key = $aaid_prev;
+					$key =~ s/gene//;
+					$key = $key - 1;
+					$presences["$key"] = "3"; #3 code for a truncated gene
 				}
 				$qs_prev = $q_start;
 				$qe_prev = $q_end;
@@ -449,7 +456,7 @@ foreach(<IN>){
 		chomp $locus_id;
 		my $pa_string = $_;
 		$pa_string =~ s/gene[0-9]+\t/\t/;
-		if($pa_string =~ m/\t0/){
+		if($pa_string =~ m/\t0/ || $pa_string =~ m/\t3/){
 			foreach(@unique_allele){
 				chomp;
 				my $extraction_head = $extraction_heads_hash{$_};
@@ -525,7 +532,7 @@ while(<GENOME>){
 		chomp;
 		$sn++;
 		my $gene_id = "gene$sn";
-		if($_ eq 0){ #
+		if($_ eq 0 || $_ eq 3){
 			push @gene_missing, $gene_id;
 		}
 	}
@@ -634,12 +641,19 @@ while(<LIST>){
 				my $seq = $seq_hash{$isolate_name};
 				$allele_assigned = $allele_hash{$seq};
 				unless($allele_assigned){
-					$allele_assigned = "M";
+					$allele_assigned = "Missing";
 				}	
+			}elsif($_ eq 3){
+				my $isolate_name = $isolate_names["$counter_poz"];
+				my $seq = $seq_hash{$isolate_name};
+				$allele_assigned = $allele_hash{$seq};
+				unless($allele_assigned){
+					$allele_assigned = "Truncated";
+				}
 			}elsif($_ eq 2){
-				$allele_assigned = "D";
+				$allele_assigned = "Paralogue";
 			}elsif($_ eq 9){
-				$allele_assigned = "N";
+				$allele_assigned = "Ambiguity_Codes";
 			}
 			$allele_string = "$allele_string\t$allele_assigned";
 		}
@@ -737,37 +751,37 @@ while (<IN>){
 			next;
 		}
 		else{
-			if($inline =~ /[mnt]/i){
+			if($inline =~ /Missing/ || $inline =~ /Ambiguity/ || $inline =~ /Truncated/){
 				$na++;
-				print OUT "$inline\t", "4NA", "\n";
+				print OUT "$inline\t", "incomplete", "\n";
 			}
-			elsif($inline =~ /d/i){
+			elsif($inline =~ /Paralogue/){
 				$dup++;
-				print OUT "$inline\t", "2dup", "\n";
+				print OUT "$inline\t", "paralogue", "\n";
 			}
 			else{
 				my($element1, $element2, $judgement);
-				$judgement = "same";
+				$judgement = "identical";
 				foreach(@in){
 					$element1 = $_;
 					foreach(@in){
 						$element2 = $_;
 						if($element1 != $element2){
-							$judgement = "dif";
+							$judgement = "polymorphic";
 						}
 						else{
 							next;
 						}
 					}
 				}
-				if($judgement eq "same"){
+				if($judgement eq "identical"){
 					$same++;
-					print OUT "$inline\t", "3same", "\n";
+					print OUT "$inline\t", "identical", "\n";
 					print OUT2 "$inline\n";
 				}
 				else{
 					$dif++;
-					print OUT "$inline\t", "1dif", "\n";
+					print OUT "$inline\t", "polymorphic", "\n";
 					print OUT2 "$inline\n";
 				}
 			}
@@ -790,12 +804,23 @@ close OUT2;
 ###################
 open(IN, "<allele_matrix.sorted2.tmp");
 open(OUT, ">>allele_matrix.sorted.transposed.tmp");
+open(OUT2, ">allele_calling.tmp");
+open(LIST, "<genome_list.tmp");
+open(LIST2, ">genome_list2.tmp");
+print LIST2 "\n";
+while(<LIST>){
+	chomp;
+	print LIST2 "$_\n";
+	print OUT2 "\t$_";
+}
+print OUT2 "\tsummary\n";
+system("cat allele_calling.tmp allele_matrix.sorted2.tmp>allele_calling.txt");
 my ($inline, $in, $genome, $gene, $gene_previous, $allele, $coordinates, $copy, $counter,
 		 $first_col, $second_col, $number_of_column, $allele_sum1, $allele_sum2, $duplicates, $shared);
 my (@column, @genome);
 while (<IN>){
 	if($_ =~ m/^\s/){
-	next;
+		next;
 	}
 	else{
 		chomp;
@@ -814,16 +839,10 @@ while (<IN>){
 		last;
 	}
 }
-open(LIST, "<genome_list.tmp");
-open(LIST2, ">genome_list2.tmp");
-print LIST2 "\n";
-while(<LIST>){
-	chomp;
-	print LIST2 "$_\n";
-}
 system("paste genome_list2.tmp allele_matrix.sorted.transposed.tmp >output.allele_matrix.txt");
 close IN;
 close OUT;
+close OUT2;
 close LIST;
 close LIST2;
 ###################
@@ -873,7 +892,7 @@ foreach(@isolates){
 		$gene = $_;
 		$type = $types["$gene_counter"];
 		$gene_counter++;
-		if($type eq "1dif"){
+		if($type eq "polymorphic"){
 			$gene_counter = $gene_counter - 1;
 			@profile1 = split ('\t', $profiles1);
 			$allele1 = $profile1["$gene_counter"];
@@ -1305,6 +1324,7 @@ system ("mv output.Splitstree.nex ./output_$T0/Splitstree.nex");
 system ("mv output.Structure.txt ./output_$T0/allele_profiles.txt");
 system ("mv output.gene_list.txt ./output_$T0/gene_list.txt");
 system ("mv output.BAPS.txt ./output_$T0/BAPS.txt");
+system ("mv allele_calling.txt ./output_$T0/allele_calling.txt");
 #system ("mv *.combined.fas ./tmp_$T0/");
 system ("rm -f *.combined.fas");
 system ("mv *.tmp ./tmp_$T0/");
