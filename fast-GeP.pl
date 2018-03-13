@@ -1218,7 +1218,7 @@ if($opt_l == 1){
 		if($line_counter == 1){
 			print OUT "$inline\n";
 		}
-		elsif($inline=~ /\t[MNTD]\t/i){
+		elsif($inline=~ /\t[a-z]+\t/i){
 			next;
 		}
 		else{
