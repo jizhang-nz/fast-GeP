@@ -7,7 +7,8 @@ Fast-Genome Profiler (Fast-GeP) is the first genome-by-genome allele-calling pro
 It is written in Perl and has been tested in MacOS (OS X 10.9.5 and High Sierra v 10.13.1) and Ubuntu (14.04 and 16.04).
 
 Test data showed that the program equipped with the new algorithm achieved significant improvements in allele calling efficiency compared to a conventional gene-by-gene approach. The new program, Fast-GeP, render a fast and easy way to infer high-resolution genealogical relationships between bacterial isolates using WGS data.
-.
+
+
 ![usage-0](https://github.com/jizhang-nz/fast-GeP/blob/master/Examples/Fig.1.png)
 
 ## Motivation
