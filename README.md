@@ -1,12 +1,12 @@
-# Fast Genome Profiler (Fast-GeP)
+# Fast Genome Profiler (fast-GeP)
 Fast and easy way to infer high-resolution genealogical relationship of bacterial isolates with WGS assembly data.
 
 ## Introduction
 
-Fast-Genome Profiler (Fast-GeP) is the first genome-by-genome allele-calling program that can transform bacterial WGS assembly data into allele profiles. 
+Fast-Genome Profiler (fast-GeP) is the first genome-by-genome allele-calling program that can transform bacterial WGS assembly data into allele profiles. 
 It is written in Perl and has been tested in MacOS (OS X 10.9.5 and High Sierra v 10.13.1) and Ubuntu (14.04 and 16.04).
 
-[Test data](https://github.com/jizhang-nz/fast-GeP/tree/master/Examples) showed that Fast-GeP achieved significant improvements in allele calling efficiency compared to [GeP](https://github.com/jizhang-nz/GeP), which is using conventional gene-by-gene approach.
+[Test data](https://github.com/jizhang-nz/fast-GeP/tree/master/Examples) showed that fast-GeP achieved significant improvements in allele calling efficiency compared to [GeP](https://github.com/jizhang-nz/GeP), which uses conventional gene-by-gene approach.
 
 ![usage-0](https://github.com/jizhang-nz/fast-GeP/blob/master/Examples/Fig.1.png)
 
