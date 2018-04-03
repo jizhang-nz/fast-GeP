@@ -42,5 +42,9 @@ Run the analysis using BLAST+ as aligner and do not produce pariewise comparison
 
     fast-GeP -g list.fas.txt -r reference.gbk -n
 
+A full list of available options and switches could be displayed by running commands like:
+
+    fast-GeP -h
+    
 ## Citation
 [_Genome-by-genome approach for fast bacterial genealogical relationship evaluation_](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/bty195/4956016?guestAccessKey=21fb84f5-d50b-4e14-873b-ca51f7a4d31c)
