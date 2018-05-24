@@ -18,8 +18,7 @@ Before start, you need to make sure the following three programs were full funct
    * [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
    * [DIAMOND](https://github.com/bbuchfink/diamond) (v0.9.10.111 or higher)
    * [MAFFT](https://mafft.cbrc.jp/alignment/software/)
-   And
-   * [SplitsTree4](http://www.splitstree.org/)(to generate a phylogenetic networks from the file `Splitstree.nex` in the output folder)
+   * [SplitsTree4] (http://www.splitstree.org/)(to generate a phylogenetic networks from the file `Splitstree.nex` in the output folder)
 
 ## Usage
 Let's assume you have put the `fast-GeP.pl` file in your PATH. If not, or if you prefer, you could always put the `fast-GeP.pl` file along with your other input files, and use commands like:
