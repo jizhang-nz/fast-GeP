@@ -14,11 +14,11 @@ It is written in Perl and has been tested in MacOS (OS X 10.9.5 and High Sierra 
 Large-scale WGS dataset based studies are becoming increasingly common. WGS based pathogen surveillance and outbreak investigations create a demand for highly discriminative and time-efficient bioinformatics tools to transform large amounts of sequencing data into usable biological information such as relationship of the isolates.
 
 ## Prerequisites
-Before start, you need to make sure the following three programs were full functional in your system:
+Before start, you need to make sure the following four programs were full functional in your system:
    * [BLAST+](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
    * [DIAMOND](https://github.com/bbuchfink/diamond) (v0.9.10.111 or higher)
    * [MAFFT](https://mafft.cbrc.jp/alignment/software/)
-   * [SplitsTree4](http://www.splitstree.org/) (to generate a phylogenetic networks from the file `Splitstree.nex` in the output folder)
+   * [SplitsTree4](http://www.splitstree.org/) (to generate a phylogenetic network from the output file `Splitstree.nex`)
 
 ## Usage
 Let's assume you have put the `fast-GeP.pl` file in your PATH. If not, or if you prefer, you could always put the `fast-GeP.pl` file along with your other input files, and use commands like:
