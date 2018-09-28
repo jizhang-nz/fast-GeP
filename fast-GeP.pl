@@ -138,6 +138,7 @@ while(<GENOME>){
 			$seq =~ s/>//;
 			$seq =~ s/\s//g;
 			$seq =~ s/N/n/g;
+			$seq =~ s/[^a-zA-Z]//g;
 			print OUT "$seq", "\n$spacer\n";
 		}
 	}
