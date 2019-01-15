@@ -138,7 +138,6 @@ while(<GENOME>){
 			$seq =~ s/>//;
 			$seq =~ s/\s//g;
 			$seq =~ s/N/n/g;
-			$seq =~ s/[^a-zA-Z]//g;
 			print OUT "$seq", "\n$spacer\n";
 		}
 	}
@@ -516,7 +515,7 @@ while(<GENOME>){
 		}else{
 			$strand = "PLUS";
 		}
-		if($coverage >= $coverage_c && $identity ne 100){
+		if($coverage >= $coverage_c && $identity ne 100 && $identity >= $identity_i){
 			push @gene_ids, $gene_id;
 			$q_start_hash{$gene_id} = $q_start;
 			$q_end_hash{$gene_id} = $q_end;
@@ -1219,7 +1218,7 @@ if($opt_l == 1){
 		if($line_counter == 1){
 			print OUT "$inline\n";
 		}
-		elsif($inline=~ /\t[a-z]+.*\t/i){
+		elsif($inline=~ /\t[a-z]+\t/i){
 			next;
 		}
 		else{
