@@ -146,7 +146,7 @@ while(<GENOME>){
 	$/="\n";
 }
 close GENOME;
-################### parsing the reference GBK
+################### parsing the reference GenBank file
 print("parsing the reference GKB file $opt_r...\n") if ($opt_v == 0);
 my $GBK_name = $opt_r;
 open (IN, "<$GBK_name") or die "Cannot open the GBK file!";
