@@ -32,14 +32,15 @@
 #   -c: Minimum coverage of alignment to define an allele. [Default = 100].
 #   -i: Minimum identity percentage to define an allele. [Default = 80].
 #   -t: Minimum coverage of alignment to define a truncated allele. [Default = 50].
-#	-d: Number of N filled in concatinating the assemblies. [Default = 200].
+#   -d: Number of N filled in concatinating the assemblies. [Default = 200].
+#   -f: Number of threads. [Default = 4].
 
 use strict;
 use Getopt::Std;
 use Benchmark; 
 my $T0 = time();
 ###################
-getopts('g:r:d:c:i:t:e:v b a h l o m n ');
+getopts('g:r:d:c:i:t:e:f:v b a h l o m n ');
 our ($opt_g, $opt_r, $opt_d, $opt_c, $opt_i, $opt_t, $opt_e, $opt_f, $opt_v, $opt_b, $opt_a, $opt_h, $opt_l, $opt_o, $opt_n);
 my $distance_d = $opt_d || "200";
 my $coverage_c = $opt_c || "100";
