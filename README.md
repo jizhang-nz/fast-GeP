@@ -35,7 +35,7 @@ Run the analysis using DIAMOND as aligner:
 
     fast-GeP -g list.fas.txt -r reference.gbk -b
 
-Run the analysis using BLAST+ as aligner and produce a 'long' results:
+Run the analysis using BLAST+ as aligner and produce a 'long' result:
 
     fast-GeP -g list.fas.txt -r reference.gbk -l
 
