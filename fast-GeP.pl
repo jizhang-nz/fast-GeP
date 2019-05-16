@@ -1219,7 +1219,7 @@ if($opt_l == 1){
 		if($line_counter == 1){
 			print OUT "$inline\n";
 		}
-		elsif($inline=~ /\t[A-Za-z]){
+		elsif($inline=~ /\t[A-Za-z]/){
 			next;
 		}
 		else{
