@@ -29,23 +29,23 @@ Here are some example commands:
 
 Run the analysis using BLAST+ as aligner (_i.e._ build an _ad hoc_ scheme from `reference.gbk` to transform the assembly files in `list.fas.txt` into allele profiles using BLAST+):
 
-    fast-GeP -g list.fas.txt -r reference.gbk
+    fast-GeP.pl -g list.fas.txt -r reference.gbk
 
 Run the analysis using DIAMOND as aligner:
 
-    fast-GeP -g list.fas.txt -r reference.gbk -b
+    fast-GeP.pl -g list.fas.txt -r reference.gbk -b
 
 Run the analysis using BLAST+ as aligner and produce a 'long' result:
 
-    fast-GeP -g list.fas.txt -r reference.gbk -l
+    fast-GeP.pl -g list.fas.txt -r reference.gbk -l
 
 Run the analysis using BLAST+ as aligner and do not produce pariewise comparison files:
 
-    fast-GeP -g list.fas.txt -r reference.gbk -n
+    fast-GeP.pl -g list.fas.txt -r reference.gbk -n
 
 A full list of available options and switches could be displayed by running commands like:
 
-    fast-GeP -h
+    fast-GeP.pl -h
     
 ## Citation
 [_Genome-by-genome approach for fast bacterial genealogical relationship evaluation_](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/bty195/4956016?guestAccessKey=21fb84f5-d50b-4e14-873b-ca51f7a4d31c)
