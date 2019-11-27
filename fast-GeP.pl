@@ -55,8 +55,8 @@ Fast Genome Profiler (Fast-GeP) - extraction of allele profiles from genomic seq
 version: 1.0
 date: 4.1.2018
 
-Example commands: 
-fast-GeP -g list_genomes.txt -r reference.gbk
+Example command: 
+fast-GeP.pl -g list_genomes.txt -r reference.gbk
 
 or,
 perl fast-GeP.pl -g list_genomes.txt -r reference.gbk
