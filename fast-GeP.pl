@@ -16,7 +16,6 @@
 
 #Revision notes:
 #version: 1.0.1
-#the first version.
 
 
 # Switch:
