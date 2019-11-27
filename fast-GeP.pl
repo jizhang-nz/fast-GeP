@@ -15,7 +15,7 @@
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #Revision notes:
-#version: 1.0
+#version: 1.0.1
 #the first version.
 
 
@@ -25,6 +25,7 @@
 #   -l: Produce extended results.
 #   -n: Do not produce pairwise comparison files for all the isolates. 
 #   -b: Using DIAMOND instead of BLAST+ as aligner in the primary search.
+#   -V: Print version.
 
 # Option:
 #   -g: Name of the text file listing the genomic sequences need to be analyzed. Each file name should occupy a line.
@@ -40,8 +41,8 @@ use Getopt::Std;
 use Benchmark; 
 my $T0 = time();
 ###################
-getopts('g:r:d:c:i:t:e:f:v b a h l o m n ');
-our ($opt_g, $opt_r, $opt_d, $opt_c, $opt_i, $opt_t, $opt_e, $opt_f, $opt_v, $opt_b, $opt_a, $opt_h, $opt_l, $opt_o, $opt_n);
+getopts('g:r:d:c:i:t:e:f:v:V b a h l o m n ');
+our ($opt_g, $opt_r, $opt_d, $opt_c, $opt_i, $opt_t, $opt_e, $opt_f, $opt_v, $opt_b, $opt_a, $opt_h, $opt_l, $opt_o, $opt_n, $opt_V);
 my $distance_d = $opt_d || "200";
 my $coverage_c = $opt_c || "100";
 my $identity_i = $opt_i || "80";
@@ -49,11 +50,23 @@ my $coverage_t = $opt_t || "50";
 my $threads_f = $opt_f || "4";
 my $evalue_e = $opt_e || "0.001";
 ###################
-if($opt_h == 1){
+my @date = readpipe("date");
+if($opt_g && $opt_r){
+	print "Fast-GeP analysis initiated at @date" if ($opt_v == 0);
+}else{
+	$opt_h = 1;
+}
+###################
+if($opt_V == 1){
+	print "fast-GeP 1.0.1\n";
+	exit;
+}
+###################
+if($opt_h == 1 && $opt_V == 0){
 print ("
 Fast Genome Profiler (Fast-GeP) - extraction of allele profiles from genomic sequences with genome-by-genome approach.
-version: 1.0
-date: 4.1.2018
+version: 1.0.1
+date: 27.11.2019
 
 Example command: 
 fast-GeP.pl -g list_genomes.txt -r reference.gbk
@@ -61,13 +74,13 @@ fast-GeP.pl -g list_genomes.txt -r reference.gbk
 or,
 perl fast-GeP.pl -g list_genomes.txt -r reference.gbk
 
-
 Switch:
    -h: Show help
    -v: Do not show progress on the screen.
    -l: Produce extended results.
    -n: Do not produce pairwise comparison files for all the isolates. 
    -b: Using DIAMOND instead of BLAST+ as aligner in the primary search.
+   -V: Print version.
 
 Option:
    -g: Name of the text file listing the genomic sequences need to be analyzed. Each file name should occupy a line.
@@ -81,10 +94,8 @@ Option:
 exit;
 }
 ###################
-my @date = readpipe("date");
-print "Fast-GeP analysis initiated at @date" if ($opt_v == 0);
-open(REPORT, ">>output.report.tmp");
 open(GENOME, "<$opt_g") or die "Cannot open genome list file!";
+open(REPORT, ">>output.report.tmp");
 open(OUT, ">genome_list.tmp");
 open(OUT2, ">genome_list2.tmp");
 open(OUT3, ">genome_list3.tmp");
