@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #Copy (C) 2018-2019  Massey University.
 #Written by Ji Zhang, MD PhD
 
