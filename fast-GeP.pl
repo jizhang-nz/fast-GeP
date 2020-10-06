@@ -15,7 +15,7 @@
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #Revision notes:
-#version: 1.0.1
+#version: 1.0.2
 
 
 # Switch:
@@ -57,15 +57,15 @@ if($opt_g && $opt_r){
 }
 ###################
 if($opt_V == 1){
-	print "fast-GeP 1.0.1\n";
+	print "fast-GeP 1.0.2\n";
 	exit;
 }
 ###################
 if($opt_h == 1 && $opt_V == 0){
 print ("
 Fast Genome Profiler (Fast-GeP) - extraction of allele profiles from genomic sequences with genome-by-genome approach.
-version: 1.0.1
-date: 27.11.2019
+version: 1.0.2
+date: 6.10.2020
 
 Example command: 
 fast-GeP.pl -g list_genomes.txt -r reference.gbk
@@ -1161,7 +1161,7 @@ print HTML2 <<END_OF_HTML;
 END_OF_HTML
 		}
 print HTML2 <<END_OF_HTML;
-</TABLE><div><a href="../output_$T0/report.html">index</a></div>
+</TABLE><div><a href="../output_$T0/difference_matrix.html">index</a></div>
 END_OF_HTML
 
 print HTML2 <<END_OF_HTML;
